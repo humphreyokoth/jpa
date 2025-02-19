@@ -1,6 +1,6 @@
 package com.example.jpa.models;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -8,6 +8,13 @@ import lombok.*;
 @Entity
 public class Author {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+    generator = "author_sequence")
+    @SequenceGenerator(name = "author_sequence",
+    sequenceName = "author_sequence",
+            allocationSize = 1
+    )
     private Integer id;
     private String firstName;
     private String lastName;
